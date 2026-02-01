@@ -14,7 +14,6 @@ const SmoothScroll = () => {
     }
 
     requestAnimationFrame(raf);
-
     return () => {
       lenis.destroy();
     };
