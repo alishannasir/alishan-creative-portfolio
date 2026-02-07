@@ -20,7 +20,6 @@ const SmoothScroll = () => {
       lenis.destroy();
     };
   }, []);
-
   return null;
 };
 
