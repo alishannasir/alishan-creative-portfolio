@@ -56,7 +56,6 @@ const Services = () => {
     const next = () => setCurrent((c) => (c === services.length - 1 ? 0 : c + 1));
 
     const service = services[current];
-
     return (
         <section ref={ref} className="min-h-screen flex items-center px-4 md:px-8 py-24 relative overflow-hidden">
             <div className="w-full">
