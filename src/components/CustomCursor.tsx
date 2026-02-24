@@ -37,12 +37,12 @@ const CustomCursor = () => {
     };
   }, []);
 
-  const size = isText ? 60 : isHovering ? 40 : 14;
+  const size = isText ? 70 : isHovering ? 40 : 14;
 
   return (
     <motion.div
       ref={cursorRef}
-      className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:block rounded-full"
+      className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:block"
       animate={{
         x: pos.x - size / 2,
         y: pos.y - size / 2,
@@ -51,13 +51,18 @@ const CustomCursor = () => {
       }}
       transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
     >
-      <div
-        className={`w-full h-full rounded-full transition-all duration-200 ${
-          isText
-            ? "bg-foreground mix-blend-difference"
-            : "bg-foreground border-2 border-foreground"
-        }`}
-      />
+      {isText ? (
+        /* Inverted lens: white circle + difference blend flips text color underneath */
+        <div
+          className="w-full h-full rounded-full"
+          style={{
+            backgroundColor: "#fff",
+            mixBlendMode: "difference",
+          }}
+        />
+      ) : (
+        <div className="w-full h-full rounded-full bg-foreground" />
+      )}
     </motion.div>
   );
 };
