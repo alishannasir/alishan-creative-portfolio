@@ -23,7 +23,7 @@ const Contact = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="font-display font-extrabold text-primary text-[10vw] md:text-[5vw] leading-[0.95] tracking-tight max-w-4xl mb-16"
           >
-            CALL THIS A SIGN, OR JUST GOOD TIMING — LET'S TALK.
+            GOT A PROJECT IN MIND? LET'S BUILD SOMETHING INCREDIBLE TOGETHER.
           </motion.h2>
 
           <motion.div

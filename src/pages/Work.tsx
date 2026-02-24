@@ -7,10 +7,10 @@ import project4 from "@/assets/project-4.jpg";
 import Footer from "@/components/Footer";
 
 const allProjects = [
-  { id: 1, title: "RIO LIFE", category: "E-Commerce", year: "2024", description: "A premium e-commerce platform with custom product configurator and seamless checkout experience.", image: project1 },
-  { id: 2, title: "EDITORIAL MAG", category: "Brand Identity", year: "2024", description: "Complete brand identity system including editorial design, typography, and visual language.", image: project2 },
-  { id: 3, title: "FINTECH DASH", category: "Mobile App", year: "2023", description: "A fintech dashboard reimagined with intuitive data visualization and delightful micro-interactions.", image: project3 },
-  { id: 4, title: "IMMERSIVE 3D", category: "Web Experience", year: "2023", description: "An immersive 3D web experience pushing the boundaries of WebGL and real-time rendering.", image: project4 },
+  { id: 1, title: "RIO LIFE", category: "E-Commerce Website", year: "2024", description: "A premium e-commerce platform built with React and headless CMS, featuring custom animations and seamless checkout.", image: project1 },
+  { id: 2, title: "EDITORIAL MAG", category: "Web App", year: "2024", description: "A content-rich editorial platform with dynamic layouts, dark mode, and buttery smooth page transitions.", image: project2 },
+  { id: 3, title: "FINTECH DASH", category: "Dashboard UI", year: "2023", description: "A fintech dashboard with real-time data visualization, responsive charts, and intuitive micro-interactions.", image: project3 },
+  { id: 4, title: "IMMERSIVE 3D", category: "Interactive Website", year: "2023", description: "An immersive web experience with scroll-driven animations, WebGL effects, and cinematic storytelling.", image: project4 },
 ];
 
 const Work = () => {
