@@ -61,7 +61,7 @@ const Hero = () => {
 
           <div className="relative">
             <motion.div
-              className="absolute right-0 md:right-[10%] top-[-60%] md:top-[-80%] w-[50vw] md:w-[35vw] lg:w-[30vw] aspect-[16/10] overflow-hidden"
+              className="absolute right-0 md:right-[10%] top-[0%] md:top-[-10%] w-[50vw] md:w-[35vw] lg:w-[30vw] aspect-[16/10] overflow-hidden"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
