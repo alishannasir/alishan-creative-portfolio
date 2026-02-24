@@ -48,10 +48,10 @@ const Navigation = ({ theme, toggleTheme }: NavigationProps) => {
               className="flex items-center justify-between py-6"
             >
               <Link to="/" className="font-display font-extrabold text-primary text-xl md:text-2xl tracking-tight">
-                STUDIO°
+                alishan
               </Link>
 
-              <div className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest">
+              <div className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest absolute left-1/2 -translate-x-1/2">
                 {navItems.map((item) => (
                   <Link
                     key={item.path}
@@ -98,10 +98,10 @@ const Navigation = ({ theme, toggleTheme }: NavigationProps) => {
               className="flex items-center justify-between py-3"
             >
               <Link to="/" className="font-display font-extrabold text-primary text-lg">
-                S°
+                عالی شان
               </Link>
 
-              <div className="hidden md:flex items-center gap-1 bg-card/80 backdrop-blur-md border border-border px-1 py-1 rounded-full">
+              <div className="hidden md:flex items-center gap-1 bg-card/80 backdrop-blur-md border border-border px-1 py-1 rounded-full absolute left-1/2 -translate-x-1/2">
                 {navItems.map((item) => (
                   <Link
                     key={item.path}

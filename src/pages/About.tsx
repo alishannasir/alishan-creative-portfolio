@@ -11,20 +11,32 @@ const skills = [
   "FILMMAKING", "MOTION DESIGN", "PHOTOGRAPHY",
 ];
 
+const sliderImages = [vertical1, vertical2, vertical3, vertical1, vertical2];
+
 const About = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
-  const imagesRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
   const heroInView = useInView(heroRef, { once: true, margin: "-100px" });
   const skillsInView = useInView(skillsRef, { once: true, margin: "-100px" });
-  const imagesInView = useInView(imagesRef, { once: true, margin: "-50px" });
 
   const { scrollYProgress } = useScroll();
   const marqueeX = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
 
+  // Horizontal scroll-driven slider
+  const { scrollYProgress: sliderScrollProgress } = useScroll({
+    target: sliderRef,
+    offset: ["start start", "end end"],
+  });
+  const sliderX = useTransform(
+    sliderScrollProgress,
+    [0, 1],
+    ["0%", `-${(sliderImages.length - 1) * 100}vw`]
+  );
+
   return (
     <main className="pt-32">
-      {/* Title - Reference style: WAIT. WHO THIS GUY? */}
+      {/* Title */}
       <section className="px-4 md:px-8 mb-12 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
@@ -145,26 +157,30 @@ const About = () => {
         </div>
       </section>
 
-      {/* Vertical Images Grid at bottom */}
-      <section ref={imagesRef} className="px-4 md:px-8 pb-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {[vertical1, vertical2, vertical3].map((img, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 60 }}
-              animate={imagesInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: i * 0.15 }}
-              className={`overflow-hidden ${i === 2 ? "col-span-2 md:col-span-1" : ""}`}
-            >
-              <motion.img
-                src={img}
-                alt={`Creative work ${i + 1}`}
-                className="w-full h-full object-cover aspect-[3/4]"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              />
-            </motion.div>
-          ))}
+      {/* Scroll-driven horizontal image slider */}
+      <section
+        ref={sliderRef}
+        style={{ height: `${sliderImages.length * 100}vh` }}
+        className="relative"
+      >
+        <div className="sticky top-0 h-screen w-screen overflow-hidden">
+          <motion.div
+            style={{ x: sliderX }}
+            className="flex h-full"
+          >
+            {sliderImages.map((img, i) => (
+              <div
+                key={i}
+                className="w-screen h-screen flex-shrink-0"
+              >
+                <img
+                  src={img}
+                  alt={`Creative work ${i + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
 

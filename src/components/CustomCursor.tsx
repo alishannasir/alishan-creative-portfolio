@@ -5,6 +5,7 @@ const CustomCursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [isPlus, setIsPlus] = useState(false);
+  const [isText, setIsText] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -17,12 +18,22 @@ const CustomCursor = () => {
       if (target.closest("[data-cursor-plus]")) {
         setIsPlus(true);
         setIsHovering(true);
+        setIsText(false);
       } else if (target.closest("a, button, [data-cursor-hover]")) {
         setIsHovering(true);
+        setIsPlus(false);
+        setIsText(false);
+      } else if (
+        target.closest("h1, h2, h3, h4, h5, h6, p, span, li, label, blockquote") &&
+        !target.closest("a, button")
+      ) {
+        setIsText(true);
+        setIsHovering(false);
         setIsPlus(false);
       } else {
         setIsHovering(false);
         setIsPlus(false);
+        setIsText(false);
       }
     };
 
@@ -34,32 +45,42 @@ const CustomCursor = () => {
     };
   }, []);
 
+  // When hovering text: show opposite theme color
+  // Light mode primary is red (7 100% 50%), dark mode primary is blue (215 80% 55%)
+  // Opposite: on light mode show dark-mode blue, on dark mode show light-mode red
+  const isTextOrHover = isText || isHovering;
+  const size = isHovering ? 48 : isText ? 32 : 12;
+
   return (
-    <>
-      <motion.div
-        ref={cursorRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference hidden md:block"
-        animate={{
-          x: pos.x - (isHovering ? 24 : 6),
-          y: pos.y - (isHovering ? 24 : 6),
-          width: isHovering ? 48 : 12,
-          height: isHovering ? 48 : 12,
-        }}
-        transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
+    <motion.div
+      ref={cursorRef}
+      className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:block"
+      animate={{
+        x: pos.x - size / 2,
+        y: pos.y - size / 2,
+        width: size,
+        height: size,
+      }}
+      transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
+    >
+      <div
+        className={`w-full h-full rounded-full flex items-center justify-center transition-colors duration-300 ${
+          isText
+            ? "bg-accent-cursor mix-blend-difference"
+            : "bg-foreground mix-blend-difference"
+        }`}
       >
-        <div className="w-full h-full rounded-full bg-foreground flex items-center justify-center">
-          {isPlus && (
-            <motion.span
-              initial={{ scale: 0, rotate: -90 }}
-              animate={{ scale: 1, rotate: 0 }}
-              className="text-background text-lg font-bold font-display"
-            >
-              +
-            </motion.span>
-          )}
-        </div>
-      </motion.div>
-    </>
+        {isPlus && (
+          <motion.span
+            initial={{ scale: 0, rotate: -90 }}
+            animate={{ scale: 1, rotate: 0 }}
+            className="text-background text-lg font-bold font-display"
+          >
+            +
+          </motion.span>
+        )}
+      </div>
+    </motion.div>
   );
 };
 
