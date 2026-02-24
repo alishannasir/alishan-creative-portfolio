@@ -119,9 +119,10 @@
   background-color: hsl(var(--cursor-accent));
 }
 
-/* Custom cursor hide */
-* {
-  cursor: none !important;
+@media (min-width: 768px) {
+  * {
+    cursor: none !important;
+  }
 }
 
 /* Smooth scrolling */

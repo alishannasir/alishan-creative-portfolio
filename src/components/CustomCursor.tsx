@@ -45,11 +45,7 @@ const CustomCursor = () => {
     };
   }, []);
 
-  // When hovering text: show opposite theme color
-  // Light mode primary is red (7 100% 50%), dark mode primary is blue (215 80% 55%)
-  // Opposite: on light mode show dark-mode blue, on dark mode show light-mode red
-  const isTextOrHover = isText || isHovering;
-  const size = isHovering ? 48 : isText ? 32 : 12;
+  const size = isText ? 80 : isHovering ? 48 : 12;
 
   return (
     <motion.div
@@ -64,9 +60,9 @@ const CustomCursor = () => {
       transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
     >
       <div
-        className={`w-full h-full rounded-full flex items-center justify-center transition-colors duration-300 ${
+        className={`w-full h-full rounded-full flex items-center justify-center transition-all duration-300 ${
           isText
-            ? "bg-accent-cursor mix-blend-difference"
+            ? "bg-foreground/20 backdrop-blur-sm border border-foreground/30"
             : "bg-foreground mix-blend-difference"
         }`}
       >
@@ -77,6 +73,15 @@ const CustomCursor = () => {
             className="text-background text-lg font-bold font-display"
           >
             +
+          </motion.span>
+        )}
+        {isText && (
+          <motion.span
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="font-mono text-[8px] text-foreground tracking-widest uppercase"
+          >
+            TEXT
           </motion.span>
         )}
       </div>
