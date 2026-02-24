@@ -59,7 +59,7 @@ const Services = () => {
 
   return (
     <section ref={ref} className="min-h-screen flex items-center px-4 md:px-8 py-24">
-      <div className="w-full max-w-7xl mx-auto">
+      <div className="w-full">
         <motion.div
           key={service.id}
           initial={{ opacity: 0 }}

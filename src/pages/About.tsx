@@ -52,7 +52,7 @@ const About = () => {
 
       {/* Bio */}
       <section ref={heroRef} className="px-4 md:px-8 pb-24">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto md:mx-0 text-center md:text-left">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -87,7 +87,7 @@ const About = () => {
 
       {/* Stuff I Do */}
       <section ref={skillsRef} className="py-24 px-4 md:px-8">
-        <div className="max-w-5xl mx-auto">
+        <div>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={skillsInView ? { opacity: 1, y: 0 } : {}}
@@ -121,7 +121,7 @@ const About = () => {
 
       {/* Big statement */}
       <section className="py-24 px-4 md:px-8">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="text-center">
           <motion.p
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -147,7 +147,7 @@ const About = () => {
 
       {/* Vertical Images Grid at bottom */}
       <section ref={imagesRef} className="px-4 md:px-8 pb-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
           {[vertical1, vertical2, vertical3].map((img, i) => (
             <motion.div
               key={i}
