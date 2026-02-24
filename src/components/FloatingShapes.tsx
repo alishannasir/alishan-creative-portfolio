@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 
 interface Shape {
@@ -9,6 +9,8 @@ interface Shape {
   size: number;
   filled: boolean;
   rotation: number;
+  vx: number;
+  vy: number;
 }
 
 const generateShapes = (count: number): Shape[] => {
@@ -16,131 +18,149 @@ const generateShapes = (count: number): Shape[] => {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
     type: types[Math.floor(Math.random() * types.length)],
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: 20 + Math.random() * 50,
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * document.documentElement.scrollHeight,
+    size: 18 + Math.random() * 45,
     filled: Math.random() > 0.5,
     rotation: Math.random() * 360,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: (Math.random() - 0.5) * 0.3,
   }));
 };
 
-const ShapeElement = ({ shape, mouseX, mouseY }: { shape: Shape; mouseX: number; mouseY: number }) => {
-  const dx = (mouseX - shape.x) / 100;
-  const dy = (mouseY - shape.y) / 100;
-  const dist = Math.sqrt(dx * dx + dy * dy);
-  const push = Math.max(0, 1 - dist * 2);
-  const offsetX = -dx * push * 30;
-  const offsetY = -dy * push * 30;
+const REPEL_RADIUS = 150;
+const REPEL_FORCE = 8;
 
-  const common = `transition-all duration-700 ease-out`;
+const FloatingShapes = () => {
+  const [shapes, setShapes] = useState<Shape[]>([]);
+  const [mouse, setMouse] = useState({ x: -9999, y: -9999 });
+
+  useEffect(() => {
+    setShapes(generateShapes(20));
+  }, []);
+
+  useEffect(() => {
+    const handleMove = (e: MouseEvent) => {
+      setMouse({ x: e.clientX, y: e.clientY + window.scrollY });
+    };
+    window.addEventListener("mousemove", handleMove);
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, []);
+
+  const animate = useCallback(() => {
+    setShapes((prev) =>
+      prev.map((s) => {
+        let { x, y, vx, vy } = s;
+        const dx = x - mouse.x;
+        const dy = y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < REPEL_RADIUS && dist > 0) {
+          const force = ((REPEL_RADIUS - dist) / REPEL_RADIUS) * REPEL_FORCE;
+          vx += (dx / dist) * force;
+          vy += (dy / dist) * force;
+        }
+
+        // drift
+        vx += (Math.random() - 0.5) * 0.05;
+        vy += (Math.random() - 0.5) * 0.05;
+
+        // damping
+        vx *= 0.96;
+        vy *= 0.96;
+
+        x += vx;
+        y += vy;
+
+        // wrap around
+        const pageH = document.documentElement.scrollHeight;
+        const pageW = window.innerWidth;
+        if (x < -s.size) x = pageW + s.size;
+        if (x > pageW + s.size) x = -s.size;
+        if (y < -s.size) y = pageH + s.size;
+        if (y > pageH + s.size) y = -s.size;
+
+        return { ...s, x, y, vx, vy };
+      })
+    );
+  }, [mouse]);
+
+  useEffect(() => {
+    let raf: number;
+    const loop = () => {
+      animate();
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, [animate]);
+
+  return (
+    <div className="fixed inset-0 w-full h-full pointer-events-none z-0" style={{ position: "fixed", top: 0, left: 0 }}>
+      {shapes.map((shape) => (
+        <ShapeEl key={shape.id} shape={shape} />
+      ))}
+    </div>
+  );
+};
+
+const ShapeEl = ({ shape }: { shape: Shape }) => {
+  const top = shape.y - window.scrollY;
+  const style: React.CSSProperties = {
+    position: "fixed",
+    left: shape.x,
+    top,
+    width: shape.size,
+    height: shape.size,
+  };
 
   if (shape.type === "circle") {
     return (
-      <motion.div
-        className={`absolute rounded-full ${common} ${
-          shape.filled ? "bg-primary/15" : "border border-primary/30"
-        }`}
-        style={{
-          left: `${shape.x}%`,
-          top: `${shape.y}%`,
-          width: shape.size,
-          height: shape.size,
-          transform: `translate(${offsetX}px, ${offsetY}px)`,
-        }}
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: shape.id * 0.05, duration: 0.8 }}
+      <div
+        className={`rounded-full ${shape.filled ? "bg-primary/12" : "border border-primary/25"}`}
+        style={style}
       />
     );
   }
 
   if (shape.type === "square") {
     return (
-      <motion.div
-        className={`absolute ${common} ${
-          shape.filled ? "bg-primary/10" : "border border-primary/25"
-        }`}
-        style={{
-          left: `${shape.x}%`,
-          top: `${shape.y}%`,
-          width: shape.size,
-          height: shape.size,
-          transform: `translate(${offsetX}px, ${offsetY}px) rotate(${shape.rotation + push * 20}deg)`,
-        }}
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: shape.id * 0.05, duration: 0.8 }}
+      <div
+        className={shape.filled ? "bg-primary/10" : "border border-primary/20"}
+        style={{ ...style, transform: `rotate(${shape.rotation}deg)` }}
       />
     );
   }
 
   if (shape.type === "triangle") {
-    const borderStyle = shape.filled
-      ? { borderLeft: `${shape.size / 2}px solid transparent`, borderRight: `${shape.size / 2}px solid transparent`, borderBottom: `${shape.size}px solid hsl(var(--primary) / 0.12)` }
-      : { borderLeft: `${shape.size / 2}px solid transparent`, borderRight: `${shape.size / 2}px solid transparent`, borderBottom: `${shape.size}px solid hsl(var(--primary) / 0.25)` };
-
     return (
-      <motion.div
-        className={`absolute ${common}`}
+      <div
         style={{
-          left: `${shape.x}%`,
-          top: `${shape.y}%`,
+          position: "fixed",
+          left: shape.x,
+          top,
           width: 0,
           height: 0,
-          ...borderStyle,
-          transform: `translate(${offsetX}px, ${offsetY}px) rotate(${shape.rotation + push * 15}deg)`,
+          borderLeft: `${shape.size / 2}px solid transparent`,
+          borderRight: `${shape.size / 2}px solid transparent`,
+          borderBottom: `${shape.size}px solid hsl(var(--primary) / ${shape.filled ? 0.12 : 0.2})`,
+          transform: `rotate(${shape.rotation}deg)`,
         }}
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: shape.id * 0.05, duration: 0.8 }}
       />
     );
   }
 
-  // Diamond
+  // diamond
   return (
-    <motion.div
-      className={`absolute ${common} ${
-        shape.filled ? "bg-primary/10" : "border border-primary/25"
-      }`}
+    <div
+      className={shape.filled ? "bg-primary/10" : "border border-primary/20"}
       style={{
-        left: `${shape.x}%`,
-        top: `${shape.y}%`,
+        ...style,
         width: shape.size * 0.7,
         height: shape.size * 0.7,
-        transform: `translate(${offsetX}px, ${offsetY}px) rotate(${45 + push * 20}deg)`,
+        transform: `rotate(45deg)`,
       }}
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: shape.id * 0.05, duration: 0.8 }}
     />
-  );
-};
-
-const FloatingShapes = () => {
-  const [shapes] = useState(() => generateShapes(12));
-  const [mouse, setMouse] = useState({ x: 50, y: 50 });
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      setMouse({
-        x: ((e.clientX - rect.left) / rect.width) * 100,
-        y: ((e.clientY - rect.top) / rect.height) * 100,
-      });
-    };
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
-  }, []);
-
-  return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
-      {shapes.map((shape) => (
-        <ShapeElement key={shape.id} shape={shape} mouseX={mouse.x} mouseY={mouse.y} />
-      ))}
-    </div>
   );
 };
 
