@@ -52,14 +52,7 @@ const CustomCursor = () => {
       transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
     >
       {isText ? (
-        /* Inverted lens: white circle + difference blend flips text color underneath */
-        <div
-          className="w-full h-full rounded-full"
-          style={{
-            backgroundColor: "#fff",
-            mixBlendMode: "difference",
-          }}
-        />
+        <div className="w-full h-full rounded-full border-2 border-foreground" />
       ) : (
         <div className="w-full h-full rounded-full bg-foreground" />
       )}
