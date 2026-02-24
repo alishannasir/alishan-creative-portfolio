@@ -7,10 +7,10 @@ import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
 
 const projects = [
-  { id: 1, title: "RIO LIFE", category: "E-Commerce", image: project1, size: "w-[55%]" },
-  { id: 2, title: "EDITORIAL", category: "Brand Identity", image: project2, size: "w-[40%]" },
-  { id: 3, title: "FINTECH APP", category: "Mobile App", image: project3, size: "w-[42%]" },
-  { id: 4, title: "IMMERSIVE 3D", category: "Web Experience", image: project4, size: "w-[52%]" },
+  { id: 1, title: "RIO LIFE", category: "E-Commerce Website", image: project1, size: "w-[55%]" },
+  { id: 2, title: "EDITORIAL", category: "Web App", image: project2, size: "w-[40%]" },
+  { id: 3, title: "FINTECH APP", category: "Dashboard UI", image: project3, size: "w-[42%]" },
+  { id: 4, title: "IMMERSIVE 3D", category: "Interactive Website", image: project4, size: "w-[52%]" },
 ];
 
 const layouts = [

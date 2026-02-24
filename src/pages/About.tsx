@@ -7,8 +7,8 @@ import vertical3 from "@/assets/about-vertical-3.jpg";
 import Footer from "@/components/Footer";
 
 const skills = [
-  "APP DESIGN", "WEB DESIGN", "BRANDING & GRAPHIC DESIGN",
-  "FILMMAKING", "MOTION DESIGN", "PHOTOGRAPHY",
+  "WEB DESIGN", "FRONTEND DEVELOPMENT", "REACT & NEXT.JS",
+  "MOTION & ANIMATION", "UI/UX DESIGN", "RESPONSIVE DEVELOPMENT",
 ];
 
 const sliderImages = [vertical1, vertical2, vertical3, vertical1, vertical2];
@@ -44,9 +44,9 @@ const About = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="font-display font-extrabold text-primary text-[12vw] md:text-[8vw] leading-[0.85] tracking-tighter"
         >
-          WAIT.
+          HEY,
           <br />
-          <span className="text-stroke">WHO THIS GUY?</span>
+          <span className="text-stroke">I'M ALISHAN</span>
         </motion.h1>
       </section>
 
@@ -72,15 +72,15 @@ const About = () => {
             className="space-y-6"
           >
             <p className="font-mono text-xs md:text-sm text-muted-foreground leading-relaxed tracking-wider uppercase">
-              I'M A CREATIVE DEVELOPER WITH A SERIOUS OBSESSION
-              FOR USER EXPERIENCE DESIGN. I SPECIALIZE IN MOTION, VISUAL DESIGN, AND
-              INTERACTIONS — BASICALLY, TURNING YOUR IDEAS INTO SOMETHING YOU CAN
-              ACTUALLY USE WITHOUT NEEDING A MANUAL THE SIZE OF A DICTIONARY.
+              I'M A CREATIVE WEB DEVELOPER WHO LIVES AT THE INTERSECTION
+              OF DESIGN AND CODE. I SPECIALIZE IN BUILDING BEAUTIFUL, PERFORMANT
+              WEBSITES WITH REACT, TYPESCRIPT, AND MODERN FRONTEND TOOLS — TURNING
+              YOUR VISION INTO PIXEL-PERFECT, INTERACTIVE REALITY.
             </p>
             <p className="font-mono text-xs text-muted-foreground tracking-wider leading-relaxed">
-              When I'm not coding, I'm behind a camera. Filmmaking taught me that
-              every frame is intentional, every cut carries emotion, and pacing is everything.
-              These principles flow directly into my development work.
+              I obsess over smooth animations, clean component architecture, and
+              responsive layouts that feel effortless. Whether it's a landing page
+              or a full-scale web app, I bring both the design eye and the dev chops.
             </p>
           </motion.div>
         </div>
@@ -91,7 +91,7 @@ const About = () => {
         <motion.div style={{ x: marqueeX }} className="flex whitespace-nowrap">
           {[...Array(3)].map((_, i) => (
             <span key={i} className="font-display font-extrabold text-[12vw] text-stroke tracking-tighter mx-4">
-              FILMMAKER × DEVELOPER
+              DESIGNER × DEVELOPER
             </span>
           ))}
         </motion.div>
@@ -141,8 +141,8 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="font-display font-extrabold text-primary text-xl md:text-3xl leading-tight tracking-tight"
           >
-            WITH 5 YEARS IN DESIGN, I'VE JOINED FORCES WITH FOUNDERS, PRODUCT LEADERS, AND COMPANIES
-            ACROSS SAAS, E-COMMERCE, BLOCKCHAIN, AND FIN-TECH.
+            WITH YEARS OF BUILDING FOR THE WEB, I'VE PARTNERED WITH STARTUPS, AGENCIES, AND PRODUCT TEAMS
+            ACROSS SAAS, E-COMMERCE, FINTECH, AND BEYOND.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -151,8 +151,8 @@ const About = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="font-mono text-xs text-muted-foreground tracking-wider mt-6"
           >
-            WELL, ASIDE FROM BEING AN EMPLOYEE, I'VE ALSO PLAYED A VITAL ROLE IN MAKING DEVELOPERS
-            SWEAT FROM TIME TO TIME.
+            I DON'T JUST BUILD WEBSITES — I CRAFT EXPERIENCES THAT USERS REMEMBER
+            AND DEVELOPERS ADMIRE.
           </motion.p>
         </div>
       </section>

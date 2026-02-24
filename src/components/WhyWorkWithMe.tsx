@@ -4,27 +4,27 @@ import { motion, useScroll, useTransform, useInView, AnimatePresence } from "fra
 const reasons = [
   {
     number: "01",
-    title: "OBSESSED WITH CRAFT",
-    desc: "Every detail matters. Every pixel tells a story. I don't ship until it feels right — in the gut, in the grid, in the code.",
+    title: "PIXEL-PERFECT CODE",
+    desc: "Every detail matters. I write clean, maintainable code and obsess over every pixel until the UI feels flawless across every device.",
     keyword: "CRAFT",
   },
   {
     number: "02",
-    title: "CODE + DESIGN",
-    desc: "I bridge the gap between vision and execution. Design systems, motion, architecture — all from one mind.",
-    keyword: "BRIDGE",
+    title: "DESIGN + DEVELOPMENT",
+    desc: "I bridge the gap between design and code. From Figma to production — responsive layouts, design systems, and motion, all from one mind.",
+    keyword: "FULL",
   },
   {
     number: "03",
-    title: "STORY-DRIVEN",
-    desc: "Filmmaker's eye meets developer's precision. Every project deserves a narrative that pulls people in.",
-    keyword: "STORY",
+    title: "PERFORMANCE FIRST",
+    desc: "Fast websites win. I optimize for speed, accessibility, and SEO so your site doesn't just look great — it performs great.",
+    keyword: "SPEED",
   },
   {
     number: "04",
-    title: "FUTURE-FOCUSED",
-    desc: "Building today for tomorrow's digital landscape. Cutting-edge tech with timeless design principles.",
-    keyword: "VISION",
+    title: "MODERN STACK",
+    desc: "React, TypeScript, Tailwind, Framer Motion — I use cutting-edge tools to build scalable, future-proof web applications.",
+    keyword: "STACK",
   },
 ];
 

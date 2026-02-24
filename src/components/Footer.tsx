@@ -30,7 +30,7 @@ const Footer = () => {
             <span className="text-stroke">TOGETHER</span>
           </h3>
           <p className="font-mono text-xs text-muted-foreground tracking-wider mt-6 italic">
-            Pixels and pictures — both are my love language.
+            Code, creativity, and a whole lot of caffeine.
           </p>
         </motion.div>
 

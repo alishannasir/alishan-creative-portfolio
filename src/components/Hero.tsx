@@ -26,11 +26,11 @@ const Hero = () => {
     }),
   };
 
-  const line1 = "BRAVE";
-  const line2 = "THOSE WHO";
-  const line3 = "DIVE DEEP";
-  const line4 = "AND FIND";
-  const line5 = "LIGHT";
+  const line1 = "I BUILD";
+  const line2 = "WEBSITES";
+  const line3 = "THAT FEEL";
+  const line4 = "ALIVE &";
+  const line5 = "UNREAL";
 
   const renderLine = (text: string, lineIndex: number, isStroke = false) => (
     <div className="overflow-hidden">
@@ -85,7 +85,7 @@ const Hero = () => {
           transition={{ delay: 1.8, duration: 0.6 }}
           className="font-mono text-xs md:text-sm text-muted-foreground uppercase tracking-widest mt-12 max-w-md"
         >
-          Creative Developer & Filmmaker — crafting bold digital experiences
+          Creative Web Developer — turning ideas into immersive digital experiences
         </motion.p>
       </motion.div>
 
