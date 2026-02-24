@@ -12,6 +12,7 @@ import ProjectDetail from "./pages/ProjectDetail";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
 import CustomCursor from "./components/CustomCursor";
+import SmoothScroll from "./components/SmoothScroll";
 
 const queryClient = new QueryClient();
 
@@ -69,6 +70,7 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
+          <SmoothScroll />
           <CustomCursor />
           <Navigation theme={theme} toggleTheme={toggleTheme} />
           <AnimatedRoutes />
