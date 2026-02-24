@@ -107,6 +107,18 @@
   }
 }
 
+/* Opposite-theme cursor color for text hover */
+:root {
+  --cursor-accent: 215 80% 55%;
+}
+.dark {
+  --cursor-accent: 7 100% 50%;
+}
+
+.bg-accent-cursor {
+  background-color: hsl(var(--cursor-accent));
+}
+
 /* Custom cursor hide */
 * {
   cursor: none !important;
