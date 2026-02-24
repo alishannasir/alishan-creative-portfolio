@@ -33,7 +33,7 @@ const WhyWorkWithMe = () => {
         ))}
       </motion.div>
 
-      <div className="px-4 md:px-8 max-w-6xl mx-auto">
+      <div className="px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
           {reasons.map((reason, i) => (
             <motion.div

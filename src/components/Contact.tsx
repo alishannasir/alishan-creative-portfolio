@@ -15,7 +15,7 @@ const Contact = () => {
 
   return (
     <section ref={ref} className="min-h-[70vh] flex items-center px-4 md:px-8 py-24">
-      <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
+      <div className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-16">
         <div className="flex-1">
           <motion.h2
             initial={{ opacity: 0, y: 60 }}

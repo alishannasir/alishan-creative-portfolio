@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <footer ref={ref} className="border-t border-border px-4 md:px-8 py-16">
-      <div className="max-w-7xl mx-auto">
+      <div>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
