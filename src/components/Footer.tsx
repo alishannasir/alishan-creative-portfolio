@@ -16,7 +16,7 @@ const Footer = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h3 className="font-display text-primary text-[8vw] md:text-[5vw] font-bold leading-[1.1]">
+          <h3 className="font-display text-primary text-[12vw] md:text-[8vw] font-bold leading-[1.1]">
             Let's{" "}
             <span className="inline-block relative mx-2">
               <img
