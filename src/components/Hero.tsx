@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import heroImage from "@/assets/hero-image.jpg";
+import heroImage from "@/assets/shan.jpeg";
 
 const Hero = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -61,7 +61,7 @@ const Hero = () => {
 
           <div className="relative">
             <motion.div
-              className="absolute right-0 md:right-[10%] top-[0%] md:top-[-10%] w-[50vw] md:w-[35vw] lg:w-[30vw] aspect-[16/10] overflow-hidden"
+              className="absolute right-0 md:right-[10%] w-[25vw] md:w-[20vw] lg:w-[15vw] aspect-[16/10] overflow-hidden"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
