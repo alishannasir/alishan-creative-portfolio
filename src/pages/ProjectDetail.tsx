@@ -2,56 +2,56 @@ import { useParams, Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowLeft } from "lucide-react";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import project4 from "@/assets/project-4.jpg";
+import gilgit from "@/assets/work/gilgit.png";
+import fieldPulse from "@/assets/work/filed.png";
+import qho from "@/assets/work/qho.png";
+import uconnect from "@/assets/work/uconnect.png";
 import Footer from "@/components/Footer";
 
 const allProjects = [
   {
     id: 1,
-    title: "RIO LIFE",
-    category: "E-Commerce",
+    title: "GILGIT APP",
+    category: "E-Commerce App",
     year: "2024",
-    description: "A premium e-commerce platform with custom product configurator and seamless checkout experience.",
-    longDescription: "Rio Life is a luxury e-commerce brand that demanded an experience as premium as their products. We crafted a fully custom product configurator that lets users design their perfect piece in real-time, with WebGL-powered 3D previews and buttery-smooth transitions throughout the entire shopping journey.",
+    description: "A large-scale e-commerce application serving over 1 million users with a seamless and reliable shopping experience.",
+    longDescription: "Gilgit App is a premier e-commerce platform in the region, designed to handle high-volume traffic and provide a seamless shopping experience. With over 1 million active users, the app focuses on performance, localized payment integrations, and a robust vendor dashboard that empowers local businesses.",
     role: "DESIGN & DEVELOPMENT",
-    tools: ["REACT", "THREE.JS", "GSAP", "STRIPE"],
-    image: project1,
+    tools: ["REACT NATIVE", "NODE.JS", "MONGODB", "REDIS", "AWS"],
+    image: gilgit,
   },
   {
     id: 2,
-    title: "EDITORIAL MAG",
-    category: "Brand Identity",
+    title: "FIELD PULSE",
+    category: "Landing Page & CRM",
     year: "2024",
-    description: "Complete brand identity system including editorial design, typography, and visual language.",
-    longDescription: "Editorial Mag needed a digital presence that matched the sophistication of their print publication. We developed a comprehensive brand identity system — from custom typography pairings to a modular design system that scales beautifully across web, mobile, and print.",
-    role: "BRAND IDENTITY & WEB",
-    tools: ["FIGMA", "NEXT.JS", "FRAMER MOTION", "CMS"],
-    image: project2,
+    description: "A Svelte-based landing website and CRM integration powered by Strapi, designed for efficient field service management.",
+    longDescription: "Field Pulse provides a modern solution for field service management. We built a high-performance landing page using Svelte for the frontend and Strapi as the headless CMS. The project included custom CRM integrations to automate lead management, service scheduling, and real-time reporting for field teams.",
+    role: "FULL-STACK DEVELOPMENT",
+    tools: ["SVELTE", "SVELTEKIT", "STRAPI", "POSTGRESQL", "TAILWIND"],
+    image: fieldPulse,
   },
   {
     id: 3,
-    title: "FINTECH DASH",
-    category: "Mobile App",
+    title: "QHO HR",
+    category: "SaaS Platform",
     year: "2023",
-    description: "A fintech dashboard reimagined with intuitive data visualization and delightful micro-interactions.",
-    longDescription: "Fintech Dash challenged us to make complex financial data feel accessible and even enjoyable. We designed an intuitive dashboard with custom data visualizations, gesture-based navigation, and micro-interactions that make users actually want to check their finances.",
+    description: "A comprehensive HR management SaaS platform built with Next.js, offering streamlined corporate operations and employee management.",
+    longDescription: "QHO HR is a sophisticated SaaS platform designed to streamline corporate HR operations. Built with Next.js for optimal performance and SEO, it features employee onboarding modules, payroll management, and real-time performance tracking with detailed analytics to help HR teams make data-driven decisions.",
     role: "UI/UX & FRONTEND",
-    tools: ["REACT NATIVE", "D3.JS", "TAILWIND", "NODE.JS"],
-    image: project3,
+    tools: ["NEXT.JS", "TYPESCRIPT", "TAILWIND", "PRISMA", "POSTGRESQL"],
+    image: qho,
   },
   {
     id: 4,
-    title: "IMMERSIVE 3D",
-    category: "Web Experience",
+    title: "UCONNECT",
+    category: "Corporate Website",
     year: "2023",
-    description: "An immersive 3D web experience pushing the boundaries of WebGL and real-time rendering.",
-    longDescription: "Immersive 3D is where art meets technology. We built a fully interactive 3D web experience with real-time rendering, particle systems, and spatial audio — creating a digital environment that users can explore, interact with, and lose themselves in.",
-    role: "CREATIVE DEVELOPMENT",
-    tools: ["THREE.JS", "WEBGL", "GLSL", "GSAP"],
-    image: project4,
+    description: "The official landing page for Uconnect Technologies, showcasing premium tech solutions and modern service offerings.",
+    longDescription: "Uconnect's official corporate website serves as a digital storefront for their premium technology services. The design focuses on a clean, professional aesthetic that highlights their expertise in software development and digital transformation, utilizing modern web standards and custom animations for a premium user experience.",
+    role: "BRAND IDENTITY & WEB",
+    tools: ["REACT", "FRAMER MOTION", "TYPESCRIPT", "TAILWIND", "GSAP"],
+    image: uconnect,
   },
 ];
 

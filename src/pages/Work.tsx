@@ -1,16 +1,16 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import project4 from "@/assets/project-4.jpg";
+import gilgit from "@/assets/work/gilgit.png";
+import fieldPulse from "@/assets/work/filed.png";
+import qho from "@/assets/work/qho.png";
+import uconnect from "@/assets/work/uconnect.png";
 import Footer from "@/components/Footer";
 
 const allProjects = [
-  { id: 1, title: "RIO LIFE", category: "E-Commerce Website", year: "2024", description: "A premium e-commerce platform built with React and headless CMS, featuring custom animations and seamless checkout.", image: project1 },
-  { id: 2, title: "EDITORIAL MAG", category: "Web App", year: "2024", description: "A content-rich editorial platform with dynamic layouts, dark mode, and buttery smooth page transitions.", image: project2 },
-  { id: 3, title: "FINTECH DASH", category: "Dashboard UI", year: "2023", description: "A fintech dashboard with real-time data visualization, responsive charts, and intuitive micro-interactions.", image: project3 },
-  { id: 4, title: "IMMERSIVE 3D", category: "Interactive Website", year: "2023", description: "An immersive web experience with scroll-driven animations, WebGL effects, and cinematic storytelling.", image: project4 },
+  { id: 1, title: "GILGIT APP", category: "E-Commerce App", year: "2024", description: "A large-scale e-commerce application serving over 1 million users with a seamless and reliable shopping experience.", image: gilgit },
+  { id: 2, title: "FIELD PULSE", category: "Landing Page & CRM", year: "2024", description: "A Svelte-based landing website and CRM integration powered by Strapi, designed for efficient field service management.", image: fieldPulse },
+  { id: 3, title: "QHO HR", category: "SaaS Platform", year: "2023", description: "A comprehensive HR management SaaS platform built with Next.js, offering streamlined corporate operations and employee management.", image: qho },
+  { id: 4, title: "UCONNECT", category: "Corporate Website", year: "2023", description: "The official landing page for Uconnect Technologies, showcasing premium tech solutions and modern service offerings.", image: uconnect },
 ];
 
 const Work = () => {
