@@ -1,52 +1,156 @@
-import { useState, useRef, useCallback } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gilgit from "@/assets/work/gilgit.png";
 import fieldPulse from "@/assets/work/filed.png";
 import qho from "@/assets/work/qho.png";
 import uconnect from "@/assets/work/uconnect.png";
 
-const projects = [
-    { id: 1, title: "GILGIT APP", category: "E-Commerce App", image: gilgit, size: "w-[55%]" },
-    { id: 2, title: "FIELD PULSE", category: "Landing Page & CRM", image: fieldPulse, size: "w-[40%]" },
-    { id: 3, title: "QHO HR", category: "SaaS Platform", image: qho, size: "w-[42%]" },
-    { id: 4, title: "UCONNECT", category: "Corporate Website", image: uconnect, size: "w-[52%]" },
-];
+gsap.registerPlugin(ScrollTrigger);
 
-const layouts = [
-    { justify: "justify-start", aspect: "" },
-    { justify: "justify-end", aspect: "" },
-    { justify: "justify-center", aspect: "" },
-    { justify: "justify-end", aspect: "" },
+const projects = [
+    { id: 1, title: "GILGIT APP", category: "E-Commerce App", image: gilgit, lg_size: "lg:w-[30%]", lg_justify: "lg:justify-start" },
+    { id: 2, title: "FIELD PULSE", category: "Landing Page & CRM", image: fieldPulse, lg_size: "lg:w-[30%]", lg_justify: "lg:justify-center" },
+    { id: 3, title: "QHO HR", category: "SaaS Platform", image: qho, lg_size: "lg:w-[30%]", lg_justify: "lg:justify-end" },
+    { id: 4, title: "UCONNECT", category: "Corporate Website", image: uconnect, lg_size: "lg:w-[30%]", lg_justify: "lg:justify-center" },
+    { id: 5, title: "FIELD PULSE", category: "Landing Page & CRM", image: fieldPulse, lg_size: "lg:w-[30%]", lg_justify: "lg:justify-start" },
 ];
 
 const ProjectsGrid = () => {
-    const [hoveredId, setHoveredId] = useState<number | null>(null);
-    const ref = useRef<HTMLDivElement>(null);
-    const inView = useInView(ref, { once: true, margin: "-100px" });
+    const sectionRef = useRef<HTMLElement>(null);
+    const headingRef = useRef<HTMLDivElement>(null);
+    const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const imgRefs = useRef<(HTMLImageElement | null)[]>([]);
+    const metaRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-    const [mousePos, setMousePos] = useState<Record<number, { x: number; y: number }>>({});
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
 
-    const handleMouseMove = useCallback((e: React.MouseEvent, id: number) => {
-        const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
-        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
-        setMousePos((prev) => ({ ...prev, [id]: { x, y } }));
-    }, []);
+            /* ── 1. HEADING SCROLL REVEAL ──────────────────── */
+            gsap.from(headingRef.current, {
+                opacity: 0,
+                y: 32,
+                duration: 0.9,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: headingRef.current,
+                    start: "top 88%",
+                    once: true,
+                },
+            });
 
-    const handleMouseLeave = useCallback((id: number) => {
-        setHoveredId(null);
-        setMousePos((prev) => ({ ...prev, [id]: { x: 0, y: 0 } }));
+            /* ── 2. CARD STAGGERED SCROLL REVEALS ─────────── */
+            cardRefs.current.forEach((card, i) => {
+                if (!card) return;
+                gsap.from(card, {
+                    opacity: 0,
+                    y: 70,
+                    duration: 0.85,
+                    ease: "power3.out",
+                    delay: i * 0.08,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 90%",
+                        once: true,
+                    },
+                });
+            });
+
+            /* ── 3. PER-CARD MOUSE PARALLAX + HOVER ───────── */
+            const cleanups: (() => void)[] = [];
+
+            cardRefs.current.forEach((card, i) => {
+                if (!card) return;
+                const img = imgRefs.current[i];
+                const meta = metaRefs.current[i];
+                if (!img || !meta) return;
+
+                // gsap.quickTo = butter-smooth, lag-free cursor following
+                const xTo = gsap.quickTo(img, "x", { duration: 0.95, ease: "power3.out" });
+                const yTo = gsap.quickTo(img, "y", { duration: 0.95, ease: "power3.out" });
+
+                const onMove = (e: MouseEvent) => {
+                    const rect = card.getBoundingClientRect();
+                    const rx = ((e.clientX - rect.left) / rect.width - 0.9) * 200;
+                    const ry = ((e.clientY - rect.top) / rect.height - 0.9) * 200;
+                    xTo(rx);
+                    yTo(ry);
+                    gsap.to(meta, { y: ry * 0.3, duration: 0.5, ease: "power2.out" });
+                };
+
+                const onEnter = () => {
+                    // Dim all sibling cards
+                    cardRefs.current.forEach((c, j) => {
+                        if (!c || j === i) return;
+                        gsap.to(c, {
+                            opacity: 0.35,
+                            scale: 0.96,
+                            filter: "blur(3px)",
+                            duration: 0.5,
+                            ease: "power2.out",
+                        });
+                    });
+                    // Lift hovered card
+                    gsap.to(card, {
+                        scale: 1.03,
+                        duration: 0.5,
+                        ease: "power2.out",
+                    });
+                    // Slide up + fade in meta
+                    gsap.to(meta, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.45,
+                        ease: "power2.out",
+                    });
+                };
+
+                const onLeave = () => {
+                    // Reset all cards
+                    cardRefs.current.forEach((c) => {
+                        if (!c) return;
+                        gsap.to(c, {
+                            opacity: 1,
+                            scale: 1,
+                            filter: "blur(0px)",
+                            duration: 0.55,
+                            ease: "power2.inOut",
+                        });
+                    });
+                    xTo(0);
+                    yTo(0);
+                    gsap.to(meta, {
+                        opacity: 0,
+                        y: 10,
+                        duration: 0.35,
+                        ease: "power2.in",
+                    });
+                };
+
+                card.addEventListener("mousemove", onMove);
+                card.addEventListener("mouseenter", onEnter);
+                card.addEventListener("mouseleave", onLeave);
+
+                cleanups.push(() => {
+                    card.removeEventListener("mousemove", onMove);
+                    card.removeEventListener("mouseenter", onEnter);
+                    card.removeEventListener("mouseleave", onLeave);
+                });
+            });
+
+            return () => cleanups.forEach((fn) => fn());
+
+        }, sectionRef);
+
+        return () => ctx.revert();
     }, []);
 
     return (
-        <section ref={ref} className="px-4 md:px-8 py-24">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6 }}
-                className="flex items-baseline justify-between mb-16"
-            >
+        <section ref={sectionRef} className="px-4 md:px-8 py-24">
+
+            {/* Heading */}
+            <div ref={headingRef} className="flex items-baseline justify-between mb-16">
                 <h2 className="font-display font-extrabold text-primary text-[8vw] md:text-[4vw] tracking-tight">
                     SELECTED WORK
                 </h2>
@@ -57,54 +161,35 @@ const ProjectsGrid = () => {
                 >
                     VIEW ALL →
                 </Link>
-            </motion.div>
+            </div>
 
-            <div className="">
-                {projects.map((project, i) => {
-                    const layout = layouts[i];
-                    const pos = mousePos[project.id] || { x: 0, y: 0 };
-                    const isHovered = hoveredId === project.id;
-
-                    return (
-                        <motion.div
-                            key={project.id}
-                            initial={{ opacity: 0, y: 60 }}
-                            animate={inView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.7, delay: i * 0.15 }}
-                            className={`flex ${layout.justify}`}
+            {/* Grid */}
+            <div className="space-y-16 lg:space-y-0">
+                {projects.map((project, i) => (
+                    <div key={i} className={`flex w-full mb-12 lg:mb-24 ${project.lg_justify}`}>
+                        <Link
+                            to={`/work/${project.id}`}
+                            data-cursor-plus
+                            className={`w-full ${project.lg_size}`}
                         >
-                            <Link to={`/work/${project.id}`} data-cursor-plus className={`${project.size} block space-y-10`}>
-                                <motion.div
-                                    className={`relative overflow-hidden ${layout.aspect} group`}
-                                    onMouseEnter={() => setHoveredId(project.id)}
-                                    onMouseMove={(e) => handleMouseMove(e, project.id)}
-                                    onMouseLeave={() => handleMouseLeave(project.id)}
-                                    animate={{
-                                        scale: hoveredId === null ? 1 : isHovered ? 1.03 : 0.95,
-                                        filter: hoveredId === null ? "blur(0px)" : isHovered ? "blur(0px)" : "blur(4px)",
-                                        opacity: hoveredId === null ? 1 : isHovered ? 1 : 0.4,
-                                    }}
-                                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                                >
-                                    <motion.img
+                            <div
+                                ref={(el) => { cardRefs.current[i] = el; }}
+                                className="relative group space-y-10 will-change-transform"
+                            >
+                                <div className="">
+                                    <img
+                                        ref={(el) => { imgRefs.current[i] = el; }}
                                         src={project.image}
                                         alt={project.title}
-                                        className="h-full w-full object-contain"
-                                        animate={{
-                                            x: isHovered ? pos.x : 0,
-                                            y: isHovered ? pos.y : 0,
-                                            scale: isHovered ? 1.08 : 1,
-                                        }}
-                                        transition={{ type: "spring", stiffness: 150, damping: 20 }}
+                                        className="h-full w-full object-cover will-change-transform"
                                     />
-                                </motion.div>
+                                </div>
 
-                                <motion.div
+                                {/* Meta — GSAP controls opacity/y, not CSS */}
+                                <div
+                                    ref={(el) => { metaRefs.current[i] = el; }}
                                     className="flex items-center justify-between"
-                                    animate={{
-                                        opacity: hoveredId === null ? 0.8 : isHovered ? 1 : 0.3,
-                                    }}
-                                    transition={{ duration: 0.4 }}
+                                    style={{ opacity: 0, transform: "translateY(10px)" }}
                                 >
                                     <span className="font-mono text-xs text-primary tracking-widest uppercase">
                                         ({String(i + 1).padStart(2, "0")}) {project.title}
@@ -112,11 +197,11 @@ const ProjectsGrid = () => {
                                     <span className="font-mono text-[10px] text-muted-foreground tracking-widest uppercase">
                                         {project.category}
                                     </span>
-                                </motion.div>
-                            </Link>
-                        </motion.div>
-                    );
-                })}
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                ))}
             </div>
         </section>
     );
