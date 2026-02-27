@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import contactImage from "@/assets/contact-image.jpg";
+import contactImage from "@/assets/shan2.jpg";
 
 const Contact = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -32,18 +32,19 @@ const Contact = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="flex flex-wrap gap-8 md:gap-16 font-mono text-xs tracking-widest uppercase"
           >
-            <a href="mailto:hello@studio.dev" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
-              HELLO@STUDIO.DEV
+            <a href="mailto:alishannasirwork@gmail.com.com" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
+              EMAIL ME
             </a>
-            <a href="#" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
-              BOOK A CALL
-            </a>
-            <a href="#" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
+            <a href="https://www.linkedin.com/in/ali-shan-a85721272/" target="_blank" rel="noopener noreferrer" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
               LINKEDIN
             </a>
-            <a href="#" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
-              INSTAGRAM
+            <a href="https://github.com/alishannasir" target="_blank" rel="noopener noreferrer" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
+              GITHUB
             </a>
+            <a href="https://www.upwork.com/freelancers/~01108fa2a3313a6ad2" target="_blank" rel="noopener noreferrer" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
+              UPWORK
+            </a>
+
           </motion.div>
         </div>
 
