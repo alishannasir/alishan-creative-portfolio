@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import filmImage from "@/assets/filmmaking-image.jpg";
+import filmImage from "@/assets/shan1.jpg";
 import { Github, Linkedin, Youtube, Instagram, ExternalLink } from "lucide-react";
 
 const Footer = () => {
@@ -26,11 +26,11 @@ const Footer = () => {
         >
           <h3 className="font-display text-foreground text-[14vw] md:text-[10vw] font-bold leading-[1] uppercase tracking-tight">
             LET'S{" "}
-            <span className="inline-block relative mx-2">
+            <span className="inline-block relative">
               <img
                 src={filmImage}
                 alt="Creative work"
-                className="w-16 h-16 md:w-24 md:h-24 object-cover inline-block align-middle rotate-[-3deg]"
+                className="w-28 h-28 md:w-28 md:h-28 inline-block align-middle"
               />
             </span>{" "}
             WORK

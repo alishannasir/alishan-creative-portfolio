@@ -1,9 +1,11 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import aboutImage from "@/assets/about-image.jpg";
-import vertical1 from "@/assets/about-vertical-1.jpg";
-import vertical2 from "@/assets/about-vertical-2.jpg";
-import vertical3 from "@/assets/about-vertical-3.jpg";
+import shan from "@/assets/me/shan.jpeg";
+import shan1 from "@/assets/me/shan1.jpg";
+import shan2 from "@/assets/me/shan2.jpg";
+import shan3 from "@/assets/me/shan3.jpg";
+import shan4 from "@/assets/me/shan4.jpg";
+import sky1 from "@/assets/me/sky1.jpg";
 import Footer from "@/components/Footer";
 
 const skills = [
@@ -11,7 +13,7 @@ const skills = [
   "MOTION & ANIMATION", "UI/UX DESIGN", "RESPONSIVE DEVELOPMENT",
 ];
 
-const sliderImages = [vertical1, vertical2, vertical3, vertical1, vertical2];
+const sliderImages = [shan1, shan2, shan3, shan4, sky1];
 
 const About = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -51,20 +53,20 @@ const About = () => {
       </section>
 
       {/* Profile image */}
-      <section className="flex justify-center mb-12">
+      {/* <section className="flex justify-center mb-12">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden"
         >
-          <img src={aboutImage} alt="Profile" className="w-full h-full object-cover" />
+          <img src={shan} alt="Profile" className="w-full h-full object-cover" />
         </motion.div>
-      </section>
+      </section> */}
 
       {/* Bio */}
       <section ref={heroRef} className="px-4 md:px-8 pb-24">
-        <div className="max-w-3xl mx-auto md:mx-0 text-center md:text-left">
+        <div className="  mx-auto md:mx-0 text-center ">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -91,7 +93,7 @@ const About = () => {
         <motion.div style={{ x: marqueeX }} className="flex whitespace-nowrap">
           {[...Array(3)].map((_, i) => (
             <span key={i} className="font-display font-extrabold text-[12vw] text-stroke tracking-tighter mx-4">
-              DESIGNER × DEVELOPER
+              DEVELOPER
             </span>
           ))}
         </motion.div>
@@ -158,7 +160,7 @@ const About = () => {
       </section>
 
       {/* Scroll-driven horizontal image slider */}
-      <section
+      {/* <section
         ref={sliderRef}
         style={{ height: `${sliderImages.length * 100}vh` }}
         className="relative"
@@ -176,13 +178,14 @@ const About = () => {
                 <img
                   src={img}
                   alt={`Creative work ${i + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-[100vw] h-[100vh] object-cover"
                 />
+
               </div>
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </main>

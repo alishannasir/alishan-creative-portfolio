@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import contactImage from "@/assets/contact-image.jpg";
+import contactImage from "@/assets/shan2.jpg";
 
 const Contact = () => {
   const ref = useRef<HTMLDivElement>(null);
