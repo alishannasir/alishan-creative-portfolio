@@ -1,9 +1,13 @@
-import { useRef } from "react";
+import { useRef, useLayoutEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import gsap from "gsap";
 import heroImage from "@/assets/shan.jpeg";
 
 const Hero = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const imgContainerRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -12,6 +16,41 @@ const Hero = () => {
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  /* ── GSAP mouse-follow on hero image ── */
+  useLayoutEffect(() => {
+    const container = imgContainerRef.current;
+    const img = imgRef.current;
+    if (!container || !img) return;
+
+    // quickTo gives butter-smooth cursor tracking
+    const xTo = gsap.quickTo(img, "x", { duration: 0.7, ease: "power3.out" });
+    const yTo = gsap.quickTo(img, "y", { duration: 0.7, ease: "power3.out" });
+
+    const onMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      // Normalise to -1 … +1 from the container's centre
+      const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+      const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
+      // Max travel: ±20px in each direction
+      xTo(nx * 20);
+      yTo(ny * 20);
+    };
+
+    const onLeave = () => {
+      // Spring back to centre
+      xTo(0);
+      yTo(0);
+    };
+
+    container.addEventListener("mousemove", onMove);
+    container.addEventListener("mouseleave", onLeave);
+
+    return () => {
+      container.removeEventListener("mousemove", onMove);
+      container.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
 
   const letterVariants = {
     hidden: { y: "100%", opacity: 0 },
@@ -60,18 +99,24 @@ const Hero = () => {
           {renderLine(line3, 2, true)}
 
           <div className="relative">
+            {/* Outer motion.div keeps Framer Motion scroll-parallax */}
             <motion.div
-              className="absolute right-0 md:right-[10%] w-[25vw] md:w-[20vw] lg:w-[15vw] aspect-[16/10] overflow-hidden"
+              className="absolute right-0 md:right-[10%] w-[25vw] md:w-[20vw] lg:w-[15vw] aspect-[16/10]"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
               style={{ y: imageY }}
             >
-              <img
-                src={heroImage}
-                alt="Creative developer in misty field with torch"
-                className="w-full h-full object-cover"
-              />
+              {/* Inner div is the GSAP mouse-tracking target */}
+              <div ref={imgContainerRef} className="w-full h-full">
+                <img
+                  ref={imgRef}
+                  src={heroImage}
+                  alt="Creative developer"
+                  className="w-full h-full object-cover will-change-transform"
+                  style={{ transformOrigin: "center center" }}
+                />
+              </div>
             </motion.div>
 
             {renderLine(line4, 3)}
