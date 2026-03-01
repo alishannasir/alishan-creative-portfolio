@@ -23,8 +23,40 @@ const ProjectsGrid = () => {
     const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
     const imgRefs = useRef<(HTMLImageElement | null)[]>([]);
     const metaRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const hireMeCursorRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
+        /* ── 0. HIRE ME CURSOR FOLLOWER ───────────────── */
+        const cursor = hireMeCursorRef.current;
+        const section = sectionRef.current;
+
+        let onSectionMove: ((e: MouseEvent) => void) | null = null;
+        let onSectionEnter: (() => void) | null = null;
+        let onSectionLeave: (() => void) | null = null;
+
+        if (cursor && section) {
+            const xTo = gsap.quickTo(cursor, "x", { duration: 0.55, ease: "power3.out" });
+            const yTo = gsap.quickTo(cursor, "y", { duration: 0.55, ease: "power3.out" });
+
+            onSectionMove = (e: MouseEvent) => {
+                const rect = section.getBoundingClientRect();
+                xTo(e.clientX - rect.left);
+                yTo(e.clientY - rect.top);
+            };
+
+            onSectionEnter = () => {
+                gsap.to(cursor, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" });
+            };
+
+            onSectionLeave = () => {
+                gsap.to(cursor, { opacity: 0, scale: 0.4, duration: 0.3, ease: "power2.in" });
+            };
+
+            section.addEventListener("mousemove", onSectionMove);
+            section.addEventListener("mouseenter", onSectionEnter);
+            section.addEventListener("mouseleave", onSectionLeave);
+        }
+
         const ctx = gsap.context(() => {
 
             /* ── 1. HEADING SCROLL REVEAL ──────────────────── */
@@ -143,11 +175,35 @@ const ProjectsGrid = () => {
 
         }, sectionRef);
 
-        return () => ctx.revert();
+        return () => {
+            ctx.revert();
+            if (section) {
+                if (onSectionMove) section.removeEventListener("mousemove", onSectionMove);
+                if (onSectionEnter) section.removeEventListener("mouseenter", onSectionEnter);
+                if (onSectionLeave) section.removeEventListener("mouseleave", onSectionLeave);
+            }
+        };
     }, []);
 
     return (
-        <section ref={sectionRef} className="px-4 md:px-8 py-24">
+        <section ref={sectionRef} className="px-4 md:px-8 py-24 relative cursor-none">
+
+            {/* Hire Me Custom Cursor */}
+            <div
+                ref={hireMeCursorRef}
+                className="pointer-events-none absolute z-50 -translate-x-1/2 -translate-y-1/2"
+                style={{ opacity: 0, scale: 0.4, top: 0, left: 0 }}
+            >
+                <a
+                    href="https://www.upwork.com/freelancers/~01108fa2a3313a6ad2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pointer-events-auto flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-primary-foreground font-mono text-xs font-bold tracking-widest uppercase shadow-lg select-none cursor-pointer"
+                >
+                    Hire Me
+                </a>
+            </div>
+
 
             {/* Heading */}
             <div ref={headingRef} className="flex items-baseline justify-between mb-16">
