@@ -12,7 +12,6 @@ const Hero = () => {
     target: ref,
     offset: ["start start", "end start"],
   });
-
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
