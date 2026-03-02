@@ -12,7 +12,6 @@ const Hero = () => {
     target: ref,
     offset: ["start start", "end start"],
   });
-
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
@@ -36,7 +35,6 @@ const Hero = () => {
       xTo(nx * 20);
       yTo(ny * 20);
     };
-
     const onLeave = () => {
       // Spring back to centre
       xTo(0);
