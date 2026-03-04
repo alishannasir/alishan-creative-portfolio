@@ -61,7 +61,6 @@ const NotFound = () => {
           </Link>
         </motion.div>
       </div>
-
       {/* Animated line */}
       <motion.div
         className="absolute bottom-12 left-1/2 -translate-x-1/2"
