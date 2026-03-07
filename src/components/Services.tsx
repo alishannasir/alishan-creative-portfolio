@@ -46,7 +46,6 @@ const services = [
         ],
     },
 ];
-
 const Services = () => {
     const [current, setCurrent] = useState(0);
     const [isDescHovered, setIsDescHovered] = useState(false);
@@ -183,7 +182,6 @@ const Services = () => {
                         </AnimatePresence>
                     </div>
                 </div>
-
                 {/* Fixed Navigation Controls (Absolute to section) */}
                 <div className="absolute bottom-12 left-4 right-4 md:left-8 md:right-8 flex items-center justify-between pointer-events-none">
                     <div className="hidden lg:block h-[1px] bg-primary/10 flex-grow mr-12" />
