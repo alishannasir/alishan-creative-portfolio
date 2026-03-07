@@ -46,7 +46,6 @@ const services = [
         ],
     },
 ];
-
 const Services = () => {
     const [current, setCurrent] = useState(0);
     const [isDescHovered, setIsDescHovered] = useState(false);
