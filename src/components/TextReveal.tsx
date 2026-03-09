@@ -13,7 +13,6 @@ const TextReveal = ({ children, className = "", delay = 0, as: Tag = "p" }: Text
   const inView = useInView(ref, { once: true, margin: "-50px" });
 
   const words = children.split(" ");
-
   return (
     <div ref={ref} className="overflow-hidden">
       <Tag className={className}>
