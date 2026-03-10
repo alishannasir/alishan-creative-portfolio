@@ -28,7 +28,6 @@ const CustomCursor = () => {
         setIsHovering(false);
       }
     };
-
     window.addEventListener("mousemove", move);
     window.addEventListener("mouseover", handleOver);
     return () => {
