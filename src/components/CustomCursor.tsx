@@ -58,5 +58,4 @@ const CustomCursor = () => {
     </motion.div>
   );
 };
-
 export default CustomCursor;
