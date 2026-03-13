@@ -11,7 +11,6 @@ const CustomCursor = () => {
     const move = (e: MouseEvent) => {
       setPos({ x: e.clientX, y: e.clientY });
     };
-
     const handleOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (
