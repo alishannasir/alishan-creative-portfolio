@@ -10,9 +10,7 @@ const Contact = () => {
     target: ref,
     offset: ["start end", "end start"],
   });
-
   const imageY = useTransform(scrollYProgress, [0, 1], [-100, 100]);
-
   return (
     <section ref={ref} className="min-h-[70vh] flex items-center px-4 md:px-8 py-24">
       <div className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-16">
