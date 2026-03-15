@@ -23,7 +23,6 @@ const Contact = () => {
           >
             GOT A PROJECT IN MIND? LET'S BUILD SOMETHING INCREDIBLE TOGETHER.
           </motion.h2>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
