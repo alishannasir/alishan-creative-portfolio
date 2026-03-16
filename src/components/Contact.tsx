@@ -10,9 +10,7 @@ const Contact = () => {
     target: ref,
     offset: ["start end", "end start"],
   });
-
   const imageY = useTransform(scrollYProgress, [0, 1], [-100, 100]);
-
   return (
     <section ref={ref} className="min-h-[70vh] flex items-center px-4 md:px-8 py-24">
       <div className="w-full flex flex-col md:flex-row items-center gap-12 md:gap-16">
@@ -25,7 +23,6 @@ const Contact = () => {
           >
             GOT A PROJECT IN MIND? LET'S BUILD SOMETHING INCREDIBLE TOGETHER.
           </motion.h2>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -44,7 +41,6 @@ const Contact = () => {
             <a href="https://www.upwork.com/freelancers/~01108fa2a3313a6ad2" target="_blank" rel="noopener noreferrer" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
               UPWORK
             </a>
-
           </motion.div>
         </div>
 
