@@ -41,7 +41,6 @@ const Contact = () => {
             <a href="https://www.upwork.com/freelancers/~01108fa2a3313a6ad2" target="_blank" rel="noopener noreferrer" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
               UPWORK
             </a>
-
           </motion.div>
         </div>
 
