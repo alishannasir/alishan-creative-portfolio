@@ -15,7 +15,7 @@ const Footer = () => {
     { Icon: ExternalLink, href: "https://www.upwork.com/freelancers/~01108fa2a3313a6ad2", label: "Upwork" },
   ];
   return (
-    <footer ref={ref} className="border-t border-border px-4 md:px-8 py-16">
+    <footer ref={ref} className="border-t border-border px-4 md:px-8 py-16 overflow-hidden">
       <div>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
