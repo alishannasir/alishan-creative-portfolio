@@ -58,7 +58,7 @@ const Services = () => {
     const service = services[current];
 
     return (
-        <section ref={ref} className="min-h-screen flex items-center px-4 md:px-8 py-24 relative">
+        <section ref={ref} className="min-h-screen flex items-center px-4 md:px-8 py-24 relative overflow-hidden">
             <div className="w-full">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
                     {/* Left Column: Title and Items */}
