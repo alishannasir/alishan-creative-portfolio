@@ -4,27 +4,27 @@ import { motion, useScroll, useTransform, useInView, AnimatePresence } from "fra
 const reasons = [
   {
     number: "01",
-    title: "PIXEL-PERFECT CODE",
+    title: "Pixel-perfect Code",
     desc: "Every detail matters. I write clean, maintainable code and obsess over every pixel until the UI feels flawless across every device.",
-    keyword: "CRAFT",
+    keyword: "Craft",
   },
   {
     number: "02",
-    title: "DESIGN + DEVELOPMENT",
+    title: "Design + Development",
     desc: "I bridge the gap between design and code. From Figma to production — responsive layouts, design systems, and motion, all from one mind.",
-    keyword: "FULL",
+    keyword: "Full",
   },
   {
     number: "03",
-    title: "PERFORMANCE FIRST",
+    title: "Performance First",
     desc: "Fast websites win. I optimize for speed, accessibility, and SEO so your site doesn't just look great — it performs great.",
-    keyword: "SPEED",
+    keyword: "Speed",
   },
   {
     number: "04",
-    title: "MODERN STACK",
+    title: "Modern Stack",
     desc: "React, TypeScript, Tailwind, Framer Motion — I use cutting-edge tools to build scalable, future-proof web applications.",
-    keyword: "STACK",
+    keyword: "Stack",
   },
 ];
 
@@ -49,9 +49,9 @@ const WhyWorkWithMe = () => {
           {[...Array(4)].map((_, i) => (
             <span
               key={i}
-              className="font-display font-extrabold text-[12vw] md:text-[10vw] text-stroke tracking-tighter mx-4"
+              className="font-display font-bold text-[12vw] md:text-[10vw] text-stroke tracking-tighter mx-4"
             >
-              WHY WORK WITH ME
+              Why work with me
             </span>
           ))}
         </motion.div>
@@ -59,9 +59,9 @@ const WhyWorkWithMe = () => {
           {[...Array(4)].map((_, i) => (
             <span
               key={i}
-              className="font-display font-extrabold text-[12vw] md:text-[10vw] tracking-tighter mx-4 text-primary/10"
+              className="font-display font-bold text-[12vw] md:text-[10vw] tracking-tighter mx-4 text-primary/10"
             >
-              WHY WORK WITH ME
+              Why work with me
             </span>
           ))}
         </motion.div>
@@ -89,7 +89,7 @@ const WhyWorkWithMe = () => {
                     animate={{ opacity: 0.05, x: 0 }}
                     exit={{ opacity: 0, x: -100 }}
                     transition={{ duration: 0.5 }}
-                    className="absolute right-4 md:right-8 font-display font-extrabold text-[20vw] md:text-[15vw] text-foreground pointer-events-none select-none leading-none"
+                    className="absolute right-4 md:right-8 font-display font-bold text-[20vw] md:text-[15vw] text-foreground pointer-events-none select-none leading-none"
                   >
                     {reason.keyword}
                   </motion.span>
@@ -109,7 +109,7 @@ const WhyWorkWithMe = () => {
 
               {/* Title */}
               <motion.h3
-                className="font-display font-extrabold text-2xl md:text-4xl lg:text-5xl text-foreground relative z-10"
+                className="font-display font-bold text-2xl md:text-4xl lg:text-5xl text-foreground relative z-10"
                 animate={{
                   x: activeIndex === i ? 16 : 0,
                   color: activeIndex === i ? "hsl(var(--primary))" : "hsl(var(--foreground))",
