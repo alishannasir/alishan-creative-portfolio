@@ -24,9 +24,9 @@ const Navigation = ({ theme, toggleTheme }: NavigationProps) => {
   }, [location]);
 
   const navItems = [
-    { label: "HOME", path: "/" },
-    { label: "WORK", path: "/work" },
-    { label: "ABOUT", path: "/about" },
+    { label: "Home", path: "/" },
+    { label: "Work", path: "/work" },
+    { label: "About", path: "/about" },
   ];
 
   return (
@@ -47,8 +47,8 @@ const Navigation = ({ theme, toggleTheme }: NavigationProps) => {
               transition={{ duration: 0.3 }}
               className="flex items-center justify-between py-6"
             >
-              <Link to="/" className="font-display font-extrabold text-primary text-xl md:text-2xl tracking-tight">
-                alishan
+              <Link to="/" className="font-display font-bold text-primary text-xl md:text-2xl tracking-tight">
+                Alishan
               </Link>
 
               <div className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest absolute left-1/2 -translate-x-1/2">
@@ -153,9 +153,9 @@ const Navigation = ({ theme, toggleTheme }: NavigationProps) => {
             <button
               onClick={() => setMenuOpen(false)}
               data-cursor-hover
-              className="absolute top-6 right-6 text-primary-foreground font-mono text-sm"
+              className="absolute top-6 right-6 text-primary-foreground font-mono text-sm tracking-widest uppercase"
             >
-              CLOSE
+              Close
             </button>
             {navItems.map((item, i) => (
               <motion.div
@@ -166,7 +166,7 @@ const Navigation = ({ theme, toggleTheme }: NavigationProps) => {
               >
                 <Link
                   to={item.path}
-                  className="font-display text-5xl md:text-7xl font-extrabold text-primary-foreground hover:opacity-70 transition-opacity"
+                  className="font-display text-5xl md:text-7xl font-bold text-primary-foreground hover:opacity-70 transition-opacity"
                 >
                   {item.label}
                 </Link>

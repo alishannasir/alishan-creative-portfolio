@@ -9,8 +9,8 @@ import sky1 from "@/assets/me/sky1.jpg";
 import Footer from "@/components/Footer";
 
 const skills = [
-  "WEB DESIGN", "FRONTEND DEVELOPMENT", "REACT & NEXT.JS",
-  "MOTION & ANIMATION", "UI/UX DESIGN", "RESPONSIVE DEVELOPMENT",
+  "Web Design", "Frontend Development", "React & Next.js",
+  "Motion & Animation", "UI/UX Design", "Responsive Development",
 ];
 
 const sliderImages = [shan1, shan2, shan3, shan4, sky1];
@@ -44,11 +44,11 @@ const About = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-extrabold text-primary text-[12vw] md:text-[8vw] leading-[0.85] tracking-tighter"
+          className="font-display font-bold text-primary text-[12vw] md:text-[8vw] leading-[0.85] tracking-tighter"
         >
-          HEY,
+          Hey,
           <br />
-          <span className="text-stroke">I'M ALISHAN</span>
+          <span className="text-stroke">I'm Alishan</span>
         </motion.h1>
       </section>
 
@@ -73,11 +73,11 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <p className="font-mono text-xs md:text-sm text-muted-foreground leading-relaxed tracking-wider uppercase">
-              I'M A CREATIVE WEB DEVELOPER WHO LIVES AT THE INTERSECTION
-              OF DESIGN AND CODE. I SPECIALIZE IN BUILDING BEAUTIFUL, PERFORMANT
-              WEBSITES WITH REACT, TYPESCRIPT, AND MODERN FRONTEND TOOLS — TURNING
-              YOUR VISION INTO PIXEL-PERFECT, INTERACTIVE REALITY.
+            <p className="font-mono text-sm md:text-base text-muted-foreground leading-relaxed tracking-wide">
+              I'm a creative web developer who lives at the intersection
+              of design and code. I specialize in building beautiful, performant
+              websites with React, TypeScript, and modern frontend tools — turning
+              your vision into pixel-perfect, interactive reality.
             </p>
             <p className="font-mono text-xs text-muted-foreground tracking-wider leading-relaxed">
               I obsess over smooth animations, clean component architecture, and
@@ -92,8 +92,8 @@ const About = () => {
       <section className="py-16 overflow-hidden">
         <motion.div style={{ x: marqueeX }} className="flex whitespace-nowrap">
           {[...Array(3)].map((_, i) => (
-            <span key={i} className="font-display font-extrabold text-[12vw] text-stroke tracking-tighter mx-4">
-              DEVELOPER
+            <span key={i} className="font-display font-bold text-[12vw] text-stroke tracking-tighter mx-4">
+              Developer
             </span>
           ))}
         </motion.div>
@@ -106,9 +106,9 @@ const About = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={skillsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="font-display font-extrabold text-primary text-3xl md:text-5xl tracking-tight mb-16"
+            className="font-display font-bold text-primary text-3xl md:text-5xl tracking-tight mb-16"
           >
-            STUFF I DO
+            Stuff I do
           </motion.h2>
 
           <div className="space-y-0">
@@ -121,7 +121,7 @@ const About = () => {
                 className="border-b border-border py-6 flex items-center justify-between group"
                 data-cursor-hover
               >
-                <h3 className="font-display font-bold text-primary text-lg md:text-2xl tracking-tight group-hover:translate-x-4 transition-transform duration-500">
+                <h3 className="font-display font-semibold text-primary text-lg md:text-2xl tracking-tight group-hover:translate-x-4 transition-transform duration-500">
                   {skill}
                 </h3>
                 <span className="font-mono text-xs text-muted-foreground tracking-widest">
@@ -141,20 +141,20 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-display font-extrabold text-primary text-xl md:text-3xl leading-tight tracking-tight"
+            className="font-display font-bold text-primary text-xl md:text-3xl leading-tight tracking-tight"
           >
-            WITH YEARS OF BUILDING FOR THE WEB, I'VE PARTNERED WITH STARTUPS, AGENCIES, AND PRODUCT TEAMS
-            ACROSS SAAS, E-COMMERCE, FINTECH, AND BEYOND.
+            With years of building for the web, I've partnered with startups, agencies, and product teams
+            across SaaS, e-commerce, fintech, and beyond.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-mono text-xs text-muted-foreground tracking-wider mt-6"
+            className="font-mono text-sm text-muted-foreground tracking-wide mt-6"
           >
-            I DON'T JUST BUILD WEBSITES — I CRAFT EXPERIENCES THAT USERS REMEMBER
-            AND DEVELOPERS ADMIRE.
+            I don't just build websites — I craft experiences that users remember
+            and developers admire.
           </motion.p>
         </div>
       </section>

@@ -5,44 +5,44 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 const services = [
     {
         id: "01",
-        title: "WEB DEVELOPMENT\nDESIGN",
+        title: "Web Development\nDesign",
         description:
-            "EVERY PIXEL CARRIES INTENTION. I CRAFT WEBSITES THAT FEEL INEVITABLE — WHERE BEAUTY AND FUNCTION BECOME ONE.",
+            "Every pixel carries intention. I craft websites that feel inevitable — where beauty and function become one.",
         items: [
-            "RESPONSIVE LAYOUTS",
-            "UI/UX DESIGN",
-            "WIREFRAMING & PROTOTYPING",
-            "DESIGN SYSTEMS",
-            "VISUAL IDENTITY",
-            "ART DIRECTION",
+            "Responsive Layouts",
+            "UI/UX Design",
+            "Wireframing & Prototyping",
+            "Design Systems",
+            "Visual Identity",
+            "Art Direction",
         ],
     },
     {
         id: "02",
-        title: "FRONTEND\nDEVELOPMENT",
+        title: "Frontend\nDevelopment",
         description:
-            "CODE IS MY CANVAS. I BUILD PERFORMANT, PIXEL-PERFECT INTERFACES THAT PUSH BOUNDARIES AND DELIGHT USERS.",
+            "Code is my canvas. I build performant, pixel-perfect interfaces that push boundaries and delight users.",
         items: [
-            "REACT & NEXT.JS",
-            "TYPESCRIPT",
-            "ANIMATION & INTERACTION",
-            "PERFORMANCE OPTIMIZATION",
-            "RESPONSIVE DEVELOPMENT",
-            "ACCESSIBILITY (A11Y)",
+            "React & Next.js",
+            "TypeScript",
+            "Animation & Interaction",
+            "Performance Optimization",
+            "Responsive Development",
+            "Accessibility (a11y)",
         ],
     },
     {
         id: "03",
-        title: "CREATIVE\nEXPERIENCES",
+        title: "Creative\nExperiences",
         description:
-            "WHERE TECHNOLOGY MEETS ARTISTRY. I CREATE IMMERSIVE WEB EXPERIENCES WITH MOTION, 3D, AND INTERACTIVE STORYTELLING.",
+            "Where technology meets artistry. I create immersive web experiences with motion, 3D, and interactive storytelling.",
         items: [
-            "MOTION DESIGN (FRAMER MOTION)",
-            "WEBGL & THREE.JS",
-            "SCROLL-DRIVEN ANIMATIONS",
-            "INTERACTIVE PROTOTYPES",
-            "CMS INTEGRATION",
-            "API DEVELOPMENT",
+            "Motion Design (Framer Motion)",
+            "WebGL & Three.js",
+            "Scroll-driven Animations",
+            "Interactive Prototypes",
+            "CMS Integration",
+            "API Development",
         ],
     },
 ];
@@ -72,7 +72,7 @@ const Services = () => {
                             >
                                 {/* Title with word animation */}
                                 <motion.h2
-                                    className="font-display font-extrabold text-primary text-[10vw] md:text-[6vw] lg:text-[5vw] leading-[0.9] tracking-tight whitespace-pre-line mb-12"
+                                    className="font-display font-bold text-primary text-[10vw] md:text-[6vw] lg:text-[5vw] leading-[0.9] tracking-tight whitespace-pre-line mb-12"
                                 >
                                     <motion.span
                                         initial={{ opacity: 0, y: 40 }}

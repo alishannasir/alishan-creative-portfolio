@@ -19,9 +19,9 @@ const Contact = () => {
             initial={{ opacity: 0, y: 60 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-extrabold text-primary text-[10vw] md:text-[5vw] leading-[0.95] tracking-tight max-w-4xl mb-16"
+            className="font-display font-bold text-primary text-[10vw] md:text-[5vw] leading-[0.95] tracking-tight max-w-4xl mb-16"
           >
-            GOT A PROJECT IN MIND? LET'S BUILD SOMETHING INCREDIBLE TOGETHER.
+            Got a project in mind? Let's build something incredible together.
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -30,16 +30,16 @@ const Contact = () => {
             className="flex flex-wrap gap-8 md:gap-16 font-mono text-xs tracking-widest uppercase"
           >
             <a href="mailto:alishannasirwork@gmail.com.com" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
-              EMAIL ME
+              Email me
             </a>
             <a href="https://www.linkedin.com/in/ali-shan-a85721272/" target="_blank" rel="noopener noreferrer" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
-              LINKEDIN
+              LinkedIn
             </a>
             <a href="https://github.com/alishannasir" target="_blank" rel="noopener noreferrer" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
-              GITHUB
+              GitHub
             </a>
             <a href="https://www.upwork.com/freelancers/~01108fa2a3313a6ad2" target="_blank" rel="noopener noreferrer" data-cursor-hover className="text-primary hover:opacity-60 transition-opacity">
-              UPWORK
+              Upwork
             </a>
           </motion.div>
         </div>
