@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Syne", "sans-serif"],
-        mono: ["Space Mono", "monospace"],
+        display: ["Urbanist", "sans-serif"],
+        mono: ["Epilogue", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -7,10 +7,10 @@ import uconnect from "@/assets/work/uconnect.png";
 import Footer from "@/components/Footer";
 
 const allProjects = [
-  { id: 1, title: "GILGIT APP", category: "E-Commerce App", year: "2024", description: "A large-scale e-commerce application serving over 1 million users with a seamless and reliable shopping experience.", image: gilgit },
-  { id: 2, title: "FIELD PULSE", category: "Landing Page & CRM", year: "2024", description: "A Svelte-based landing website and CRM integration powered by Strapi, designed for efficient field service management.", image: fieldPulse },
-  { id: 3, title: "QHO HR", category: "SaaS Platform", year: "2023", description: "A comprehensive HR management SaaS platform built with Next.js, offering streamlined corporate operations and employee management.", image: qho },
-  { id: 4, title: "UCONNECT", category: "Corporate Website", year: "2023", description: "The official landing page for Uconnect Technologies, showcasing premium tech solutions and modern service offerings.", image: uconnect },
+  { id: 1, title: "Gilgit App", category: "E-Commerce App", year: "2024", description: "A large-scale e-commerce application serving over 1 million users with a seamless and reliable shopping experience.", image: gilgit },
+  { id: 2, title: "Field Pulse", category: "Landing Page & CRM", year: "2024", description: "A Svelte-based landing website and CRM integration powered by Strapi, designed for efficient field service management.", image: fieldPulse },
+  { id: 3, title: "Qho HR", category: "SaaS Platform", year: "2023", description: "A comprehensive HR management SaaS platform built with Next.js, offering streamlined corporate operations and employee management.", image: qho },
+  { id: 4, title: "Uconnect", category: "Corporate Website", year: "2023", description: "The official landing page for Uconnect Technologies, showcasing premium tech solutions and modern service offerings.", image: uconnect },
 ];
 
 const Work = () => {
@@ -25,11 +25,11 @@ const Work = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-extrabold text-primary text-[12vw] md:text-[8vw] leading-[0.85] tracking-tighter"
+          className="font-display font-bold text-primary text-[12vw] md:text-[8vw] leading-[0.85] tracking-tighter"
         >
-          ALL
+          All
           <br />
-          <span className="text-stroke">WORK</span>
+          <span className="text-stroke">Work</span>
         </motion.h1>
       </section>
 
@@ -72,7 +72,7 @@ const Work = () => {
                 transition={{ duration: 0.4 }}
               >
                 <div>
-                  <h3 className="font-display font-extrabold text-2xl md:text-4xl text-primary tracking-tight">
+                  <h3 className="font-display font-bold text-2xl md:text-4xl text-primary tracking-tight">
                     {project.title}
                   </h3>
                   <motion.p

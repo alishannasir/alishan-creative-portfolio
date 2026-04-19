@@ -23,8 +23,8 @@ const Footer = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h3 className="font-display text-foreground text-[14vw] md:text-[10vw] font-bold leading-[1] uppercase tracking-tight">
-            LET'S{" "}
+          <h3 className="font-display text-foreground text-[14vw] md:text-[10vw] font-bold leading-[1] tracking-tight">
+            Let's{" "}
             <span className="inline-block relative">
               <img
                 src={filmImage}
@@ -32,9 +32,9 @@ const Footer = () => {
                 className="w-28 h-28 md:w-28 md:h-28 inline-block align-middle"
               />
             </span>{" "}
-            WORK
+            work
             <br />
-            <span className="text-stroke">TOGETHER</span>
+            <span className="text-stroke">together</span>
           </h3>
           <p className="font-mono text-xs text-muted-foreground tracking-wider mt-6 italic">
             Code, creativity, and a whole lot of caffeine.
